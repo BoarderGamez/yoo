@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import CharCountedTextarea from '$lib/components/CharCountedTextarea.svelte';
 	import Devlog from '../../../Devlog.svelte';
 	import type { PageProps } from './$types';
@@ -18,7 +19,7 @@
 	You can't update anything other than the description, if you want to change the time, image or 3D
 	model then delete and recreate the journal entry.
 </p>
-<form method="POST" class="flex flex-col gap-3">
+<form method="POST" class="flex flex-col gap-3" use:enhance>
 	<div class="mt-1 flex flex-col gap-2">
 		<label class="flex flex-col gap-1">
 			Description

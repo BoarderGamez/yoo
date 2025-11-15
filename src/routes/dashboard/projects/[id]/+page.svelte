@@ -7,6 +7,7 @@
 	import Devlog from './Devlog.svelte';
 	import { ALLOWED_IMAGE_TYPES, ALLOWED_MODEL_EXTS, MAX_UPLOAD_SIZE } from './config';
 	import { projectStatuses } from '$lib/utils';
+	import { enhance } from '$app/forms';
 
 	const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
 
@@ -96,7 +97,7 @@
 			<p>Journalling is locked as the project has been shipped</p>
 		</div>
 	{:else if data.validationConstraints.timeSpent.currentMax >= data.validationConstraints.timeSpent.min}
-		<form method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
+		<form method="POST" class="flex flex-col gap-3" enctype="multipart/form-data" use:enhance>
 			<div class="flex flex-col gap-2">
 				<label class="flex flex-col gap-1">
 					Time spent (minutes)

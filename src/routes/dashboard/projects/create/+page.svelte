@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import type { PageProps } from './$types';
 
 	let { form }: PageProps = $props();
 </script>
 
 <h1 class="mt-5 mb-3 font-hero text-2xl font-medium">Create project</h1>
-<form method="POST" class="flex flex-col gap-3">
+<form method="POST" class="flex flex-col gap-3" use:enhance>
 	<div>
 		<label class="flex flex-col gap-1">
 			Project name*

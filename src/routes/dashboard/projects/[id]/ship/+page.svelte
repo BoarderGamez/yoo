@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import Project from '$lib/components/Project.svelte';
 	import type { PageProps } from './$types';
 	import { Ship } from '@lucide/svelte';
@@ -21,7 +22,7 @@
 	Are you sure you want to ship "{data.project.name}"? You won't be able to edit it or journal again
 	unless it gets rejected.
 </p>
-<form method="POST" class="mt-2 flex flex-row gap-2">
+<form method="POST" class="mt-2 flex flex-row gap-2" use:enhance>
 	<a href={`/dashboard/projects/${data.project.id}`} class="button sm amber">Cancel</a>
 	<button class="button sm orange">
 		<Ship />

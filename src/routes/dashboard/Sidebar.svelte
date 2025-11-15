@@ -48,7 +48,7 @@
 		<div class="aspect-square">
 			<img src={user.profilePicture} alt="User profile pic" class="aspect-square h-full" />
 		</div>
-		<div class="flex grow flex-col justify-center">
+		<div class="flex grow flex-col justify-center truncate">
 			<p class="truncate font-medium">
 				{user.name}
 			</p>

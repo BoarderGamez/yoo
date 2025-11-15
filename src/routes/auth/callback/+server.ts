@@ -85,7 +85,7 @@ export async function GET(event) {
 
 	const slackId = openidConnectDataJSON['https://slack.com/user_id'];
 	const profilePic = openidConnectDataJSON['picture'];
-	const name = openidConnectDataJSON['given_name']; // TODO: make this get the user's slack handle
+	const name = openidConnectDataJSON['name']; // TODO: make this get the user's slack handle
 
 	// TODO: Check Hackatime API if they're banned and identity if they're verified
 	// https://identity.hackclub.com/api/external/check?slack_id=

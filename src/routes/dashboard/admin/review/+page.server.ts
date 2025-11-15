@@ -1,10 +1,21 @@
 import { db } from '$lib/server/db/index.js';
 import { project, user, devlog } from '$lib/server/db/schema.js';
-import { error, redirect } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import { eq, and, or, sql } from 'drizzle-orm';
 import type { Actions } from './$types';
+import { ne } from 'drizzle-orm';
 
-export async function load({ params, locals }) {
+const PROJECT_FORMAT = {
+	project: {
+		id: project.id,
+		name: project.name,
+		description: project.description,
+		url: project.url
+	},
+	timeSpent: sql<number>`COALESCE(SUM(${devlog.timeSpent}), 0)`
+};
+
+export async function load({ locals }) {
 	if (!locals.user) {
 		throw error(500);
 	}
@@ -15,32 +26,28 @@ export async function load({ params, locals }) {
 
 	// TODO: make the database not stupid so it doesn't have to left join every single devlog
 	const projects = await db
-		.select({
-			project: {
-				id: project.id,
-				name: project.name,
-				description: project.description,
-				url: project.url,
-			},
-			user: {
-				id: user.id,
-				name: user.name
-			},
-			timeSpent: sql<number>`COALESCE(SUM(${devlog.timeSpent}), 0)`
-		})
+		.select(PROJECT_FORMAT)
 		.from(project)
 		.leftJoin(devlog, and(eq(project.id, devlog.projectId), eq(devlog.deleted, false)))
-		.leftJoin(user, eq(project.userId, user.id))
 		.where(and(eq(project.deleted, false), eq(project.status, 'submitted')))
 		.groupBy(project.id);
 
+	const users = await db
+		.select({
+			id: user.id,
+			name: user.name
+		})
+		.from(user)
+		.where(ne(user.status, 'banned'));
+
 	return {
-		projects
+		projects,
+		users
 	};
 }
 
 export const actions = {
-	default: async ({ locals, params }) => {
+	default: async ({ locals, request }) => {
 		if (!locals.user) {
 			throw error(500);
 		}
@@ -48,39 +55,22 @@ export const actions = {
 			throw error(403, { message: 'get out, peasant' });
 		}
 
-		const id: number = parseInt(params.id);
+		const data = await request.formData();
+		const statusFilter = data.get('status');
+		const projectFilter = data.get('project');
+		const userFilter = data.get('user');
+		
+		console.log(statusFilter, projectFilter, userFilter);
 
-		const queriedProject = await db
-			.select()
-			.from(project)
-			.where(
-				and(
-					eq(project.id, id),
-					eq(project.userId, locals.user.id),
-					eq(project.deleted, false),
-					or(eq(project.status, 'building'), eq(project.status, 'rejected'))
-				)
-			)
-			.get();
+		const projects = await db
+		.select(PROJECT_FORMAT)
+		.from(project)
+		.leftJoin(devlog, and(eq(project.id, devlog.projectId), eq(devlog.deleted, false)))
+		.where(and(eq(project.deleted, false), eq(project.status, 'submitted')))
+		.groupBy(project.id);
 
-		if (!queriedProject) {
-			throw error(404);
-		}
-
-		// TODO: change when shipping is properly implemented
-		await db
-			.update(project)
-			.set({
-				status: 'submitted'
-			})
-			.where(
-				and(
-					eq(project.id, queriedProject.id),
-					eq(project.userId, locals.user.id),
-					eq(project.deleted, false)
-				)
-			);
-
-		return redirect(303, '/dashboard/projects');
+		return {
+			projects
+		};
 	}
 } satisfies Actions;
