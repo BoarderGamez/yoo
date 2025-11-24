@@ -1,5 +1,5 @@
 <script lang="ts">
-  import OrpheusFlag from '../lib/components/OrpheusFlag.svelte';
+	import OrpheusFlag from '../lib/components/OrpheusFlag.svelte';
 
 	import Button from '$lib/components/Button.svelte';
 	import Accordion from '$lib/components/Accordion.svelte';
@@ -213,12 +213,12 @@
 
 <Head title="" />
 
-<OrpheusFlag/>
+<OrpheusFlag />
 
 <div class="flex w-full flex-col items-center justify-center px-10 lg:flex-row">
 	<div class="mt-40">
 		<h1 class="font-hero text-4xl sm:text-5xl md:text-6xl">Construct</h1>
-		<p class="my-3 text-xl font-medium">Spend 50 hours doing CAD, get a 3D printer!</p>
+		<p class="my-3 text-xl font-medium">Spend 50 hours doing CAD projects, get a 3D printer!</p>
 		{#if data.loggedIn}
 			<Button text="Go to dashboard" href="/dashboard" />
 		{:else}
@@ -253,26 +253,30 @@
 			<p>
 				Yes! This program is entirely funded by <a href="https://hackclub.com" class="underline">
 					Hack Club
-				</a>.
+				</a>, a US-based 501(c)(3) charity helping teens learn how to design and code, with sponsors
+				such as <a href="https://github.com" class="underline">GitHub</a>.
 			</p>
 		</Accordion>
 		<Accordion text="What can I make?">
-			<p>Any reasonable CAD project is fine, get creative! However, you must have </p>
-		</Accordion>
-		<Accordion text="What are the requirements?">
 			<p>
-				You must spend at least 10 hours on your design, which must be made in Onshape using
-				Onshape-Wakatime.
+				Any reasonable CAD project is fine, get creative! However, you must use one of the <a
+					href="/approved-editors"
+					class="underline">approved editors</a
+				>.
 			</p>
 		</Accordion>
-		<Accordion text="How will you deliver it?">
-			<p>
-				You'll wake up to a big rocket towering over your house at 6am in the morning on a random
-				Saturday.
-			</p>
+		<Accordion text="What are the requirements to get a 3D printer?">
+			<p>You must ship at least 50 hours' worth of projects by the end of the event.</p>
 		</Accordion>
-		<Accordion text="Where did you get these rockets from?">
-			<p>We blackmailed SpaceX and NASA.</p>
+		<Accordion text="What are the requirements to participate?">
+			<p>
+				You must be between the ages 13-18 and have verified your identity on our <a
+					href={`https://${data.idvDomain}`}
+					class="underline"
+				>
+					identity platform
+				</a>.
+			</p>
 		</Accordion>
 	</div>
 </div>
