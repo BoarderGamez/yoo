@@ -10,7 +10,7 @@ CREATE TABLE "devlog" (
 	"description" text NOT NULL,
 	"timeSpent" integer NOT NULL,
 	"image" text NOT NULL,
-	"model" text,
+	"model" text NOT NULL,
 	"deleted" boolean DEFAULT false NOT NULL,
 	"createdAt" timestamp DEFAULT now() NOT NULL,
 	"updatedAt" timestamp DEFAULT now() NOT NULL
@@ -65,6 +65,9 @@ CREATE TABLE "user" (
 	"name" text NOT NULL,
 	"hackatimeTrust" "hackatime_trust" NOT NULL,
 	"trust" "trust" DEFAULT 'blue' NOT NULL,
+	"clay" real DEFAULT 0 NOT NULL,
+	"brick" real DEFAULT 0 NOT NULL,
+	"shopScore" real DEFAULT 0 NOT NULL,
 	"hasSessionAuditLogs" boolean DEFAULT false NOT NULL,
 	"hasProjectAuditLogs" boolean DEFAULT false NOT NULL,
 	"hasT1Review" boolean DEFAULT false NOT NULL,

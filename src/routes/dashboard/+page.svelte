@@ -13,7 +13,7 @@
 	<h2 class="text-xl font-bold">Checklist</h2>
 	<div class="flex flex-col gap-0.5">
 		<ChecklistItem completed={data.projectCount > 0}><a href="/dashboard/projects/create" class="underline">Create</a> your first project</ChecklistItem>
-		<ChecklistItem completed={data.devlogCount > 0}>Create your first devlog</ChecklistItem>
+		<ChecklistItem completed={data.devlogCount > 0}>Make your first journal entry</ChecklistItem>
 		<ChecklistItem completed={data.shipCount > 0}>Ship your project</ChecklistItem>
 	</div>
 </div>

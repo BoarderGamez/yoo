@@ -1,6 +1,6 @@
 {
-  "id": "dfb546c6-445e-4182-a5fc-a7e86af24239",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "f39024e3-65b5-42d6-942c-c5af2930d7ec",
+  "prevId": "dfb546c6-445e-4182-a5fc-a7e86af24239",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -506,6 +506,13 @@
           "primaryKey": false,
           "notNull": true,
           "default": 0
+        },
+        "hasBasePrinter": {
+          "name": "hasBasePrinter",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
         },
         "hasSessionAuditLogs": {
           "name": "hasSessionAuditLogs",

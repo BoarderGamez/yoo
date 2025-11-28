@@ -1,4 +1,13 @@
-import { integer, pgTable, pgEnum, text, boolean, serial, timestamp } from 'drizzle-orm/pg-core';
+import {
+	integer,
+	pgTable,
+	pgEnum,
+	text,
+	boolean,
+	serial,
+	timestamp,
+	real
+} from 'drizzle-orm/pg-core';
 
 export const hackatimeTrustEnum = pgEnum('hackatime_trust', ['green', 'blue', 'yellow', 'red']);
 export const trustEnum = pgEnum('trust', ['green', 'blue', 'yellow', 'red']);
@@ -12,8 +21,14 @@ export const user = pgTable('user', {
 
 	hackatimeTrust: hackatimeTrustEnum().notNull(), // Hackatime trust
 	// TODO: implement this properly everywhere
-
 	trust: trustEnum().notNull().default('blue'), // User trust, used if hackatime trust can't be used
+
+	clay: real().notNull().default(0),
+	brick: real().notNull().default(0),
+
+	shopScore: real().notNull().default(0),
+
+	hasBasePrinter: boolean().notNull().default(false),
 
 	hasSessionAuditLogs: boolean().notNull().default(false), // Has access to session audit logs
 	hasProjectAuditLogs: boolean().notNull().default(false), // Has access to project audit logs
@@ -135,7 +150,7 @@ export const devlog = pgTable('devlog', {
 	description: text().notNull(),
 	timeSpent: integer().notNull(), // Time spent in mins
 	image: text().notNull(),
-	model: text(),
+	model: text().notNull(),
 
 	deleted: boolean().notNull().default(false), // Works the same as project deletion
 	createdAt: timestamp().notNull().defaultNow(),

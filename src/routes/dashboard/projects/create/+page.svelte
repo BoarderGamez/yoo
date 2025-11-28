@@ -54,11 +54,11 @@
 	</div>
 	<div>
 		<label class="flex flex-col gap-1">
-			URL
+			Printables URL
 			<input
 				type="text"
 				name="url"
-				placeholder="A link to your design"
+				placeholder="A link to your design on printables.com"
 				value={form?.fields?.url ?? ''}
 				class="themed-box ring-primary-900 placeholder:text-primary-900 active:ring-3"
 			/>

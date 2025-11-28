@@ -4,10 +4,10 @@
 		House,
 		PencilRuler,
 		Compass,
-		ShoppingCart,
 		LogOut,
 		ClipboardPen,
-		ClipboardPenLine
+		ClipboardPenLine,
+		Store
 	} from '@lucide/svelte';
 	import { page } from '$app/state';
 	import logo from '$lib/assets/logo.png';
@@ -20,7 +20,7 @@
 	);
 </script>
 
-<div class="themed-box m-5 flex w-60 flex-none flex-col gap-2 p-3 shadow-lg/20 2xl:w-70 rounded-xl">
+<div class="themed-box m-5 flex w-60 flex-none flex-col gap-2 rounded-xl p-3 shadow-lg/20 2xl:w-70">
 	<div class="mb-0">
 		<a href="/">
 			<img src={logo} alt="logo" />
@@ -29,7 +29,7 @@
 	<SidebarButton icon={House} href="/dashboard" exact>Home</SidebarButton>
 	<SidebarButton icon={PencilRuler} href="/dashboard/projects">Projects</SidebarButton>
 	<SidebarButton icon={Compass} href="/dashboard/explore">Explore</SidebarButton>
-	<SidebarButton icon={ShoppingCart} href="/dashboard/shop">Shop</SidebarButton>
+	<SidebarButton icon={Store} href="/dashboard/market">Market</SidebarButton>
 	{#if user.hasT1Review}
 		<SidebarButton icon={ClipboardPen} href="/dashboard/admin/review" admin={true}>
 			Review
@@ -52,7 +52,7 @@
 			<p class="truncate font-medium">
 				{user.name}
 			</p>
-			<p class="text-sm">0 coins</p>
+			<p class="text-sm">{user.clay} clay · {user.brick} brick</p>
 		</div>
 	</a>
 	<SidebarButton icon={LogOut} href="/auth/logout">Log out</SidebarButton>
