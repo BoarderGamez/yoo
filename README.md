@@ -8,8 +8,8 @@ Stack:
 
 - SvelteKit
 - Drizzle ORM
-- PostgreSQL (coming soon!)
-- Cloudflare R2 (coming soon asw!)
+- PostgreSQL
+- Cloudflare R2
 
 ## Developing
 
