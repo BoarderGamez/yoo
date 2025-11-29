@@ -56,7 +56,7 @@
 		// Add controls, targetting the same DOM element
 		let controls = new OrbitControls(camera, renderer.domElement);
 		controls.target.set(0, 0, 0);
-		controls.rotateSpeed = 0.3;
+		controls.rotateSpeed = 0.6;
 		controls.enablePan = false;
 		controls.dampingFactor = 0.1;
 		controls.enableDamping = true;
