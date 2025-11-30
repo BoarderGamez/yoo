@@ -4,6 +4,5 @@ export function load({ locals }) {
 	return {
 		loggedIn: locals.session !== null,
 		idvDomain: env.IDV_DOMAIN,
-		version: env.npm_package_version
 	};
 }

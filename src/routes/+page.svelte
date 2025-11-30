@@ -315,4 +315,4 @@
 	</div>
 </div>
 
-<Footer version={data.version} />
+<Footer />
