@@ -12,10 +12,10 @@
 
 	<div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
 		<a
-			class="themed-box flex flex-col justify-center p-3 shadow-xl transition-transform hover:scale-105 items-center gap-2"
+			class="themed-box flex flex-col items-center justify-center gap-2 p-3 shadow-xl transition-transform hover:scale-105"
 			href="/dashboard/admin/admin/users"
 		>
-			<div >
+			<div>
 				<Users size={40} />
 			</div>
 			<p class="text-2xl font-bold">Users</p>

@@ -1,7 +1,7 @@
 import { db } from '$lib/server/db/index.js';
 import { user, devlog, session } from '$lib/server/db/schema.js';
 import { error } from '@sveltejs/kit';
-import { eq, sql } from 'drizzle-orm';
+import { and, eq, sql } from 'drizzle-orm';
 import type { Actions } from './$types';
 
 export async function load({ locals, params }) {
@@ -20,7 +20,7 @@ export async function load({ locals, params }) {
 			devlogCount: sql`COALESCE(COUNT(${devlog.id}), 0)`
 		})
 		.from(user)
-		.leftJoin(devlog, eq(devlog.userId, user.id))
+		.leftJoin(devlog, and(eq(devlog.userId, user.id), eq(devlog.deleted, false)))
 		.where(eq(user.id, id))
 		.groupBy(user.id)) ?? [{ devlogCount: 0 }];
 
