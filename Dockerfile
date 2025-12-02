@@ -4,6 +4,7 @@ COPY package*.json ./
 ENV DATABASE_HOST=localhost
 RUN npm ci
 COPY . .
+ENV PUBLIC_ENV=production
 RUN npm run build
 RUN npm prune --production
 
@@ -17,6 +18,7 @@ COPY drizzle ./drizzle
 COPY server.js .
 ENV DATABASE_HOST=localhost
 ENV BODY_SIZE_LIMIT=80M
+ENV PUBLIC_ENV=production
 EXPOSE 3000
 ENV NODE_ENV=production
 CMD ["sh","-c","mkdir -p /uploads/images && mkdir -p /uploads/models && npm run db:migrate && node server.js"]
