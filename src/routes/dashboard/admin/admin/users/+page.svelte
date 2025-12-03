@@ -54,15 +54,15 @@
 						<span class="grow truncate">{user.name}</span>
 					</h1>
 					<p>
-						<span class="rounded-sm bg-primary-800 px-1 text-nowrap"
-							>{user.hasT1Review ? 't1 review' : '-'}</span
-						>
-						<span class="rounded-sm bg-primary-700 px-1 text-nowrap"
-							>{user.hasT2Review ? 't2 review' : '-'}</span
-						>
-						<span class="rounded-sm bg-primary-600 px-1 text-nowrap"
-							>{user.hasAdmin ? 'admin' : '-'}</span
-						>
+						{#if user.hasT1Review}
+							<span class="rounded-sm bg-primary-800 px-1 text-nowrap">t1 review</span>
+						{/if}
+						{#if user.hasT2Review}
+							<span class="rounded-sm bg-primary-700 px-1 text-nowrap">t2 review</span>
+						{/if}
+						{#if user.hasAdmin}
+							<span class="rounded-sm bg-primary-600 px-1 text-nowrap">admin</span>
+						{/if}
 					</p>
 					<code>
 						{user.slackId}
