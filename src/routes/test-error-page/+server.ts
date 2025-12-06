@@ -1,4 +1,7 @@
+import { logger } from '@sentry/core';
+
 export async function GET(event) {
-    throw new Error('wow massive error definitely not a test');
-    return {};
+	logger.error('big important error eek');
+	throw new Error('wow massive error definitely not a test');
+	return {};
 }

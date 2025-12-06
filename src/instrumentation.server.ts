@@ -20,4 +20,4 @@ Sentry.init({
 	// spotlight: import.meta.env.DEV,
 });
 
-export const handleError = Sentry.handleErrorWithSentry();
+// export const handleError = Sentry.handleErrorWithSentry();
