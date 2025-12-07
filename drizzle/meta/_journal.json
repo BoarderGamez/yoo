@@ -15,6 +15,20 @@
       "when": 1765070928638,
       "tag": "0001_fearless_blazing_skull",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1765147463899,
+      "tag": "0002_nebulous_bug",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1765151231107,
+      "tag": "0003_confused_captain_marvel",
+      "breakpoints": true
     }
   ]
 }

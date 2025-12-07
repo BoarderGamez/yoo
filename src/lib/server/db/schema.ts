@@ -52,7 +52,6 @@ export const projectStatusEnum = pgEnum('status', [
 	'building',
 	'submitted',
 	't1_approved',
-	'print_queue',
 	'printing',
 	'printed',
 	't2_approved',
@@ -87,6 +86,7 @@ export const projectAuditLogTypeEnum = pgEnum('project_audit_log_type', [
 export const t1ReviewActionEnum = pgEnum('t1_review_action', [
 	'approve',
 	'approve_no_print',
+	'add_comment',
 	'reject',
 	'reject_lock'
 ]);
