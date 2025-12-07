@@ -3,8 +3,11 @@
 	import Devlog from '$lib/components/Devlog.svelte';
 	import Head from '$lib/components/Head.svelte';
 	import { ExternalLink } from '@lucide/svelte';
+	import { enhance } from '$app/forms';
 
 	let { data } = $props();
+
+	let formPending = $state(false);
 </script>
 
 <Head title={'Review: ' + data.project.project.name} />
@@ -31,14 +34,16 @@
 						{data.project.devlogCount} logs ∙ {Math.floor(data.project.timeSpent / 60)}h {data
 							.project.timeSpent % 60}min
 					</p>
-					{#if data.project.project.url && data.project.project.url.length > 0}
-						<div class="mt-1 flex">
+					<div class="mt-1 flex">
+						{#if data.project.project.url && data.project.project.url.length > 0}
 							<a class="button sm primary" href={data.project.project.url} target="_blank">
 								<ExternalLink />
 								Link to project
 							</a>
-						</div>
-					{/if}
+						{:else}
+							<p class="font-bold">No Printables link</p>
+						{/if}
+					</div>
 				</div>
 
 				<div>
@@ -75,15 +80,12 @@
 			<div class="themed-box flex flex-col gap-3 p-3">coming soon</div>
 
 			<h2 class="mt-2 text-2xl font-bold">Journal logs</h2>
-			<div class="flex flex-col gap-5">
+			<div class="flex flex-col gap-5 mb-5">
 				{#each data.devlogs as devlog}
 					<Devlog {devlog} projectId={devlog.projectId} showModifyButtons={false} />
 				{/each}
 			</div>
 		</div>
-
-		<!-- not sure why it doesn't want to work otherwise, it's really weird -->
-		<div class="invisible text-xs">hello :)</div>
 	</div>
 	<div class="flex w-50 min-w-50 flex-col gap-5 lg:w-65 lg:min-w-65">
 		<div class="themed-box flex flex-col items-center gap-2 p-5 shadow-lg/20">
