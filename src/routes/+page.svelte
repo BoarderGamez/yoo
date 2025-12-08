@@ -9,7 +9,7 @@
 
 	import model from '$lib/assets/Construct Logo.3mf?url';
 	import modelImage from '$lib/assets/model.png';
-	import keyringModel from '$lib/assets/keyring.obj?url';
+	import keyringModel from '$lib/assets/keyring_colored.obj?url';
 	import sticker1Image from '$lib/assets/sticker1.png';
 	import sticker2Image from '$lib/assets/sticker2.png';
 
