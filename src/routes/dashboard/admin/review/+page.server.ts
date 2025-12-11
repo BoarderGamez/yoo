@@ -9,11 +9,9 @@ export async function load({ locals }) {
 		throw error(500);
 	}
 	if (!locals.user.hasT1Review) {
-		// TODO: make the 403 page a script that runs a memory filler to use up ram and crash your browser :D
 		throw error(403, { message: 'get out, peasant' });
 	}
 
-	// TODO: make the database not stupid so it doesn't have to left join every single devlog
 	const projects = await getProjects(['submitted'], [], []);
 
 	const allProjects = await db

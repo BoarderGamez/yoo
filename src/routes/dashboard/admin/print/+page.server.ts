@@ -3,17 +3,16 @@ import { project, user, devlog } from '$lib/server/db/schema.js';
 import { error } from '@sveltejs/kit';
 import { eq, and, sql, ne, inArray } from 'drizzle-orm';
 import type { Actions } from './$types';
+import { getCurrentlyPrinting } from './utils';
 
 export async function load({ locals }) {
 	if (!locals.user) {
 		throw error(500);
 	}
 	if (!locals.user.isPrinter) {
-		// TODO: make the 403 page a script that runs a memory filler to use up ram and crash your browser :D
 		throw error(403, { message: 'get out, peasant' });
 	}
 
-	// TODO: make the database not stupid so it doesn't have to left join every single devlog
 	const projects = await getProjects(['t1_approved'], [], []);
 
 	const allProjects = await db
@@ -32,10 +31,13 @@ export async function load({ locals }) {
 		.from(user)
 		.where(and(ne(user.trust, 'red'), ne(user.hackatimeTrust, 'red'))); // hide banned users
 
+	const currentlyPrinting = getCurrentlyPrinting(locals.user);
+
 	return {
 		allProjects,
 		projects,
-		users
+		users,
+		currentlyPrinting
 	};
 }
 

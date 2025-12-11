@@ -73,6 +73,8 @@ export const project = pgTable('project', {
 	url: text(),
 
 	status: projectStatusEnum().notNull().default('building'),
+	printedBy: serial().references(() => user.id),
+
 	deleted: boolean().notNull().default(false), // Projects aren't actually deleted, just marked as deleted (I cba to deal with foreign key delete issues for audit logs)
 
 	createdAt: timestamp().notNull().defaultNow(),
