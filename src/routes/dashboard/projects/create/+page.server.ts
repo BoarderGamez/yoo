@@ -44,8 +44,7 @@ export const actions = {
 				description: description?.toString().trim(),
 				url: url?.toString().trim(),
 				userId: locals.user.id,
-				createdAt: new Date(Date.now()),
-				updatedAt: new Date(Date.now())
+				printedBy: null
 			})
 			.returning();
 
