@@ -54,6 +54,9 @@
 						<span class="grow truncate">{user.name}</span>
 					</h1>
 					<p>
+						{#if user.isPrinter}
+							<span class="rounded-sm bg-primary-900 px-1 text-nowrap">printer</span>
+						{/if}
 						{#if user.hasT1Review}
 							<span class="rounded-sm bg-primary-800 px-1 text-nowrap">t1 review</span>
 						{/if}
