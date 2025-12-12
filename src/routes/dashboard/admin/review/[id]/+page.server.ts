@@ -168,7 +168,7 @@ export const actions = {
 
 		if (projectUser) {
 			const feedbackText = feedback ? `\n\nFeedback from reviewer:\n${feedback}` : '';
-			const encouragement = statusMessage === 'rejected' || statusMessage === 'rejected (locked)' ? ' You can try again whenever you\'re ready.' : ' Great work! :tada:';
+			const encouragement = statusMessage === 'rejected' ? ' You can try again whenever you\'re ready.' : statusMessage === 'rejected (locked)' ? ' Unfortunately, you can\'t resubmit this project. This decision is final. ' : ' Great work! :tada:';
 			await sendSlackDM(
 				projectUser.slackId,
 				`Hiya :wave: Your project <https://construct.hackclub.com/dashboard/projects/${queriedProject.id}|${queriedProject.name}> has been ${statusMessage}!${feedbackText}${encouragement}`
