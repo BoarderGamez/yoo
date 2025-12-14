@@ -39,7 +39,6 @@
 				!!
 			</span>
 		</li>
-		<li>Rhino</li>
 		<li>Blender</li>
 	</ul>
 	<p class="mt-2">No TinkerCAD please.</p>
