@@ -2,10 +2,11 @@
 	import relativeDate from 'tiny-relative-date';
 	import Devlog from '$lib/components/Devlog.svelte';
 	import Head from '$lib/components/Head.svelte';
-	import { ExternalLink } from '@lucide/svelte';
 	import { enhance } from '$app/forms';
 	import { projectStatuses } from '$lib/utils.js';
 	import ProjectLinks from '$lib/components/ProjectLinks.svelte';
+	import ThreeMFPreview from '$lib/components/ThreeMFPreview.svelte';
+	import { Download } from '@lucide/svelte';
 
 	let { data } = $props();
 
@@ -14,7 +15,9 @@
 
 <Head title={'Review: ' + data.project.project.name} />
 
-<div class="flex h-full flex-row gap-5">
+<div
+	class="-mt-5 -mr-5 flex h-full flex-row [&>*]:-mb-5 [&>*]:overflow-x-clip [&>*]:pt-5 [&>*]:pr-5"
+>
 	<div class="grow overflow-scroll">
 		<div class="flex grow flex-col gap-3">
 			<h1 class="mt-5 font-hero text-2xl font-medium">{data.project.project.name}</h1>
@@ -82,6 +85,24 @@
 				</div>
 			</div>
 
+			<div class="mt-2 flex flex-row">
+				<h2 class="grow text-2xl font-bold">3D model</h2>
+				<a
+					href={`${data.s3PublicUrl}/${data.project.project.modelFile}`}
+					download
+					class="button primary flex flex-col justify-center rounded-lg px-3 hover:outline-3 focus:outline-3"
+				>		
+					<Download />
+				</a>
+			</div>
+
+			<div class="themed-box flex h-100 flex-col gap-3 overflow-clip">
+				<ThreeMFPreview
+					identifier="model"
+					modelUrl={`${data.s3PublicUrl}/${data.project.project.modelFile}`}
+				/>
+			</div>
+
 			<h2 class="mt-2 text-2xl font-bold">Review</h2>
 			<div class="themed-box flex flex-col gap-3 p-3">
 				<form
@@ -138,7 +159,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="w-50 min-w-50 overflow-scroll lg:w-65 lg:min-w-65">
+	<div class="w-60 min-w-60 overflow-scroll lg:w-70 lg:min-w-70">
 		<div class="mb-5 flex flex-col gap-3">
 			<h1 class="text-2xl font-bold">Review history</h1>
 			{#each data.t1Reviews as review}
