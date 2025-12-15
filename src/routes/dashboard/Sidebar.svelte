@@ -46,11 +46,11 @@
 			Review
 		</SidebarButton>
 	{/if}
-	<!-- {#if user.hasT2Review}
+	{#if user.hasT2Review}
 	<SidebarButton icon={ClipboardPenLine} href="/dashboard/admin/ysws-review" admin={true}>
 	YSWS Review
 	</SidebarButton>
-	{/if} -->
+	{/if}
 	{#if user.hasAdmin}
 		<SidebarButton icon={ShieldUser} href="/dashboard/admin/admin" admin={true}>
 			Admin

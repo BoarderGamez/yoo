@@ -71,6 +71,20 @@
       "when": 1765666086518,
       "tag": "0009_clean_supreme_intelligence",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1765823713910,
+      "tag": "0010_regular_johnny_blaze",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1765834245111,
+      "tag": "0011_light_jocasta",
+      "breakpoints": true
     }
   ]
 }

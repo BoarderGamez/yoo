@@ -87,7 +87,7 @@
 		<div class="flex w-full grow flex-col gap-3">
 			<h1 class="mt-5 font-hero text-2xl font-medium">Activity</h1>
 			{#if data.devlogs.length > 0}
-				<div class="mb-5">
+				<div class="mb-5 flex flex-col gap-3">
 					{#each data.devlogs as devlog}
 						<Devlog
 							{devlog}
