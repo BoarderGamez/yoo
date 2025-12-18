@@ -11,6 +11,7 @@ import { env } from '$env/dynamic/private';
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { S3 } from '$lib/server/s3';
 import { ship } from '$lib/server/db/schema.js';
+import { sanitizeUrl } from '@braintree/sanitize-url';
 
 export async function load({ params, locals }) {
 	const id: number = parseInt(params.id);
@@ -269,9 +270,9 @@ export const actions = {
 			.update(project)
 			.set({
 				status: 'submitted',
-				url: printablesUrl.toString(),
+				url: sanitizeUrl(printablesUrl.toString()),
 				editorFileType: editorUrlExists ? 'url' : 'upload',
-				editorUrl: editorUrlExists ? editorUrl.toString() : undefined,
+				editorUrl: editorUrlExists ? sanitizeUrl(editorUrl.toString()) : undefined,
 				uploadedFileUrl: editorFileExists ? editorFilePath : undefined,
 
 				modelFile: modelPath
@@ -287,10 +288,10 @@ export const actions = {
 		await db.insert(ship).values({
 			userId: locals.user.id,
 			projectId: queriedProject.id,
-			url: printablesUrl.toString(),
+			url: sanitizeUrl(printablesUrl.toString()),
 
 			editorFileType: editorUrlExists ? 'url' : 'upload',
-			editorUrl: editorUrlExists ? editorUrl.toString() : undefined,
+			editorUrl: editorUrlExists ? sanitizeUrl(editorUrl.toString()) : undefined,
 			uploadedFileUrl: editorFileExists ? editorFilePath : undefined,
 
 			modelFile: modelPath
