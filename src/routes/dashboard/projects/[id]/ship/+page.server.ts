@@ -93,7 +93,7 @@ export const actions = {
 
 		const printablesUrlObj = new URL(printablesUrl.toString().trim());
 
-		const pathMatch = printablesUrlObj.pathname.match(/\/model\/(\d{1,5})/);
+		const pathMatch = printablesUrlObj.pathname.match(/\/model\/(\d+)/);
 		const modelId = pathMatch ? pathMatch[1] : '';
 
 		const allowedLicenseIds = (env.PRINTABLES_ALLOWED_LICENSES_ID ?? '')
