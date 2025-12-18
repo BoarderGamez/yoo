@@ -96,7 +96,7 @@ export const actions = {
 		const pathMatch = printablesUrlObj.pathname.match(/\/model\/(\d+)/);
 		const modelId = pathMatch ? pathMatch[1] : '';
 
-		const allowedLicenseIds = (env.PRINTABLES_ALLOWED_LICENSES_ID ?? '')
+		const allowedLicenseIds = (env.PRINTABLES_ALLOWED_LICENSES_ID ?? '7,1,2,9,12,10,11')
 			.split(',')
 			.map((s) => s.trim())
 			.filter((s) => s.length > 0);
@@ -135,7 +135,7 @@ export const actions = {
 
 			if (!license || !license.id) {
 				return fail(400, {
-					invalid_license: true
+					invalid_printables_url: true
 				});
 			}
 
@@ -146,7 +146,7 @@ export const actions = {
 					invalid_license: true
 				});
 			}
-		} catch (e) {
+		} catch {
 			return fail(400, {
 				invalid_printables_url: true
 			});
@@ -195,7 +195,7 @@ export const actions = {
 				'application/octet-stream',
 				'text/plain'
 			].includes(modelFile.type);
-		
+
 		if (!modelFileValid) {
 			return fail(400, {
 				invalid_model_file: true
