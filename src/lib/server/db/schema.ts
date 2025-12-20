@@ -149,7 +149,7 @@ export const legionActionEnum = pgEnum('legion_action', [
 	'print',
 	'add_comment',
 	'reject',
-	'already_printed',
+	'already_printed'
 ]);
 
 // Actions done by legion
@@ -208,4 +208,5 @@ export type User = typeof user.$inferSelect;
 export type Project = typeof project.$inferSelect;
 
 export type T1Review = typeof t1Review.$inferSelect;
+export type LegionReview = typeof legionReview.$inferSelect;
 export type T2Review = typeof t2Review.$inferSelect;

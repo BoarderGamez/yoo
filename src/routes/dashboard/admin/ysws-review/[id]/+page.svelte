@@ -7,6 +7,7 @@
 	import ProjectLinks from '$lib/components/ProjectLinks.svelte';
 	import Spinny3DPreview from '$lib/components/Spinny3DPreview.svelte';
 	import { Download } from '@lucide/svelte';
+	import ReviewHistory from '../../ReviewHistory.svelte';
 
 	let { data, form } = $props();
 
@@ -154,20 +155,6 @@
 		</div>
 	</div>
 	<div class="w-60 min-w-60 overflow-scroll lg:w-70 lg:min-w-70">
-		<div class="mb-5 flex flex-col gap-3">
-			<h1 class="text-2xl font-bold">T1 review history</h1>
-			{#each data.t1Reviews as review}
-				<div class="themed-box flex flex-col p-3 shadow-lg">
-					<p class="font-bold text-primary-400">{review.action}</p>
-					<p class="text-sm"><span class="font-bold">Notes:</span> {review.notes}</p>
-					<p class="text-sm"><span class="font-bold">Feedback:</span> {review.feedback}</p>
-					<p class="text-xs">
-						reviewed by <a href={`../../users/${review.user.id}`} class="underline"
-							>{review.user.name}</a
-						>
-					</p>
-				</div>
-			{/each}
-		</div>
+		<ReviewHistory reviews={data.reviews} />
 	</div>
 </div>
