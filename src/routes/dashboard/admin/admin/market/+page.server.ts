@@ -1,14 +1,11 @@
 import { db } from '$lib/server/db/index.js';
 import { marketItem } from '$lib/server/db/schema.js';
-import { error, fail } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import type { Actions } from './$types';
 
 export async function load({ locals }) {
-	if (!locals.user) {
-		throw error(500);
-	}
-	if (!locals.user.hasAdmin) {
+	if (!locals.user?.hasAdmin) {
 		throw error(403, { message: 'oi get out' });
 	}
 
