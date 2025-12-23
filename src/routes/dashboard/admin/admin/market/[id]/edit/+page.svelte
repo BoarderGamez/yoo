@@ -145,6 +145,6 @@
 
 	<div class="flex gap-2">
 		<button type="submit" class="button primary md" disabled={formPending}>Save</button>
-		<a href="." class="button dark-red md">Cancel</a>
+		<a href=".." class="button dark-red md">Cancel</a>
 	</div>
 </form>
