@@ -33,7 +33,7 @@
 		const price = computeUserPrice(item);
 		const save = Math.max(0, max - price);
 		const hasDiscount = save > 0 && max > 0;
-		const percentOff = hasDiscount ? Math.round((save / max) * 100) : 0;
+		const percentOff = hasDiscount ? Math.ceil((save / max) * 100) : 0;
 		return { price, save, hasDiscount, percentOff };
 	}
 
