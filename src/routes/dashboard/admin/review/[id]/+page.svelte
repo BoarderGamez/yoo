@@ -113,16 +113,14 @@
 					method="POST"
 					class="flex flex-col gap-3"
 					use:enhance={() => {
+						if (!confirm('really submit?')) {
+							return async () => {};
+						}
 						formPending = true;
 						return async ({ update }) => {
 							await update();
 							formPending = false;
 						};
-					}}
-					onsubmit={(e) => {
-						if (!confirm('really submit?')) {
-							e.preventDefault();
-						}
 					}}
 				>
 					<label class="flex flex-col gap-1">
