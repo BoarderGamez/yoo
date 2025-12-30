@@ -223,7 +223,7 @@
 			<span>Filament usage <span class="opacity-50">(grams, enter 0 if you're printing this yourself)</span></span>
 			<input
 				type="number"
-				min="0.1"
+				min="0"
 				step="0.1"
 				placeholder="50"
 				bind:value={filamentUse}
