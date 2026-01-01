@@ -62,7 +62,7 @@
 						</div>
 					</div>
 
-					<div class="mt-2 text-sm">
+					<div class="text-sm">
 						<abbr title={`${log.timestamp.toUTCString()}`} class="relative z-2">
 							{relativeDate(log.timestamp)}
 						</abbr>
