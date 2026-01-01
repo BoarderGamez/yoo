@@ -36,14 +36,7 @@ export async function load({ params, locals }) {
 				or(eq(project.status, 'building'), eq(project.status, 'rejected'))
 			)
 		)
-		.groupBy(
-			project.id,
-			project.name,
-			project.description,
-			project.url,
-			project.createdAt,
-			project.status
-		)
+		.groupBy(project.id, project.name, project.description, project.url, project.createdAt, project.status)
 		.limit(1);
 
 	if (!queriedProject) {
@@ -94,7 +87,7 @@ export const actions = {
 					eq(project.deleted, false)
 				)
 			);
-
+		
 		// Mark all associated devlogs as deleted
 		await db
 			.update(devlog)
@@ -102,7 +95,12 @@ export const actions = {
 				deleted: true,
 				updatedAt: new Date(Date.now())
 			})
-			.where(and(eq(devlog.projectId, queriedProject.id), eq(devlog.userId, locals.user.id)));
+			.where(
+				and(
+					eq(devlog.projectId, queriedProject.id),
+					eq(devlog.userId, locals.user.id),
+				)
+			);
 
 		return redirect(303, '/dashboard/projects');
 	}

@@ -71,15 +71,13 @@ export async function load({ locals }) {
 		.groupBy(project.id)
 		.as('shippedProjects');
 
-	const [shippedStats] = await db
-		.select({
-			count: count(),
-			totalTimeSpent: sql<number>`sum(${shippedProjects.timeSpent})`,
-			averageTimeSpent: sql<number>`avg(${shippedProjects.timeSpent})`,
-			totalDevlogs: sql<number>`sum(${shippedProjects.devlogCount})`,
-			averageDevlogs: sql<number>`avg(${shippedProjects.devlogCount})`
-		})
-		.from(shippedProjects);
+	const [shippedStats] = await db.select({
+		count: count(),
+		totalTimeSpent: sql<number>`sum(${shippedProjects.timeSpent})`,
+		averageTimeSpent: sql<number>`avg(${shippedProjects.timeSpent})`,
+		totalDevlogs: sql<number>`sum(${shippedProjects.devlogCount})`,
+		averageDevlogs: sql<number>`avg(${shippedProjects.devlogCount})`,
+	}).from(shippedProjects);
 
 	return {
 		users: users,
