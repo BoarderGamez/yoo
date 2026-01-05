@@ -84,6 +84,7 @@ export const project = pgTable('project', {
 
 	status: projectStatusEnum().notNull().default('building'),
 	printedBy: integer().references(() => user.id),
+	claimedAt: timestamp(), // When the project was claimed for printing
 
 	submittedToAirtable: boolean().default(false),
 
