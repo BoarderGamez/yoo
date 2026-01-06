@@ -78,3 +78,10 @@ export function calculateMarketPrice(
 		return Math.round(-m * shopScoreRemainder + maxPrice);
 	}
 }
+
+export function getProjectLinkType(editorFileType: string | null, editorUrl: string | null, uploadedFileUrl: string | null): string {
+	if (editorFileType === 'url' && editorUrl?.includes('cad.onshape.com')) return 'onshape';
+	if (editorFileType === 'url' && editorUrl?.includes('autodesk360.com')) return 'fusion-link';
+	if (editorFileType === 'upload' && uploadedFileUrl?.endsWith('.f3d')) return 'fusion-file';
+	return 'unknown';
+}

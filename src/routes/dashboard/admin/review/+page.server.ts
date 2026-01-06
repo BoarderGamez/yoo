@@ -12,7 +12,7 @@ export async function load({ locals }) {
 		throw error(403, { message: 'oi get out' });
 	}
 
-	const projects = await getProjects(['submitted'], [], []);
+	const projects = await getProjects(['submitted'], [], [], []);
 
 	const allProjects = await db
 		.select({
@@ -61,14 +61,18 @@ export const actions = {
 			return parseInt(userId.toString());
 		});
 
-		const projects = await getProjects(statusFilter, projectFilter, userFilter);
+		const typeFilter = data.getAll('type') as string[];
+
+
+		const projects = await getProjects(statusFilter, projectFilter, userFilter, typeFilter);
 
 		return {
 			projects,
 			fields: {
 				status: statusFilter,
 				project: projectFilter,
-				user: userFilter
+				user: userFilter,
+				type: typeFilter
 			}
 		};
 	}
@@ -77,7 +81,8 @@ export const actions = {
 async function getProjects(
 	statusFilter: (typeof project.status._.data)[],
 	projectFilter: number[],
-	userFilter: number[]
+	userFilter: number[],
+	typeFilter: string[]
 ) {
 	return await db
 		.select({
@@ -86,8 +91,11 @@ async function getProjects(
 				name: project.name,
 				description: project.description,
 				url: project.url,
-				createdAt: project.createdAt,
-				status: project.status
+				editorFileType: project.editorFileType,
+				editorUrl: project.editorUrl,
+				uploadedFileUrl: project.uploadedFileUrl,
+				status: project.status,
+				createdAt: project.createdAt
 			},
 			user: {
 				id: user.id,
@@ -112,6 +120,9 @@ async function getProjects(
 			project.name,
 			project.description,
 			project.url,
+			project.editorFileType,
+			project.editorUrl,
+			project.uploadedFileUrl,
 			project.createdAt,
 			project.status,
 			user.id,
