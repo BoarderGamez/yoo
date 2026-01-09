@@ -238,8 +238,8 @@ export const actions = {
 			)}h ${queriedProject.timeSpent % 60}min, each one with a 3d model file to show progress.\nAll journals can be found here: https://construct.hackclub.com/dashboard/projects/${queriedProject.project.id}`;
 
 			await airtableBase('YSWS Project Submission').create({
-				'Repository URL': repoUrl ?? '',
-				'Demo URL': queriedProject.project.url ?? '',
+				'Code URL': repoUrl ?? '',
+				'Playable URL': queriedProject.project.url ?? '',
 				Description: queriedProject.project.description ?? '',
 
 				'First Name': first_name ?? '',
