@@ -12,7 +12,7 @@ export async function load({ locals, url }) {
 		throw error(403, { message: 'oi get out' });
 	}
 
-	const hasFilters = url.searchParams.has('filtered');
+	const hasFilters = url.searchParams.size > 0;
 	const statusFilter = hasFilters
 		? (url.searchParams.getAll('status') as (typeof project.status._.data)[])
 		: (['t1_approved'] as (typeof project.status._.data)[]);

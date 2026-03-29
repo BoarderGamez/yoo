@@ -29,7 +29,6 @@
 		<div class="themed-box grow p-3">
 			<h2 class="mb-2 text-xl font-bold">Filter</h2>
 			<form method="GET">
-				<input type="hidden" name="filtered" value="1" />
 				<label class="flex flex-col gap-1">
 					<span class="font-medium">Status</span>
 					<select

@@ -26,7 +26,6 @@
 		<div class="themed-box grow p-3">
 			<h2 class="mb-2 text-xl font-bold">Filter & Sort</h2>
 			<form method="GET">
-				<input type="hidden" name="filtered" value="1" />
 					<!-- User -->
 				<label class="flex flex-col">
 					<span class="mb-1 font-medium">User</span>

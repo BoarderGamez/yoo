@@ -11,7 +11,7 @@ export async function load({ locals, url }) {
 		throw error(403, { message: 'oi get out' });
 	}
 
-	const hasFilters = url.searchParams.has('filtered');
+	const hasFilters = url.searchParams.size > 0;
 	const statusFilter = hasFilters
 		? (url.searchParams.getAll('status') as (typeof marketItemOrder.status._.data)[])
 		: (['awaiting_approval'] as (typeof marketItemOrder.status._.data)[]);

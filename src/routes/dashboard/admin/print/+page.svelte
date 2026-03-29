@@ -72,7 +72,6 @@
 		<div class="themed-box grow p-3">
 			<h2 class="mb-2 text-xl font-bold">Filter & Sort</h2>
 			<form method="GET">
-				<input type="hidden" name="filtered" value="1" />
 				<div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
 					<!-- Project status -->
 					<label class="flex flex-col gap-1">
