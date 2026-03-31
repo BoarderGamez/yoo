@@ -1,5 +1,5 @@
 body {
-    font-family: 'comic sans ms';
+    font-family: 'comic sans ms' !important;
     padding-left: 200px;
     padding-right: 200px;
     margin-bottom:20px;
