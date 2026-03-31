@@ -1,48 +1,39 @@
-body {
+* {
     font-family: 'comic sans ms' !important;
-    padding-left: 200px;
-    padding-right: 200px;
-    margin-bottom:20px;
-    border-radius: 20%;
-}
-@keyframes un-spin-around{
-    from {color:#1ddfd5}
-    to {color: #df8e1d;}
+    padding-left: 200px !important;
+    padding-right: 200px !important;
+    margin-bottom:20px !important;
+    border-radius: 20% !important;
 }
 h1 {
-    text-align:center;
-    align-self:auto;
-    color: #df8e1d;
-    font-size: 5em;
-    animation-name: un-spin-around;
-    animation-duration: 2s;
+    text-align:center !important;
+    align-self:auto !important;
+    color: #df8e1d !important;
+    font-size: 5em !important;
 }
 @keyframes spin-around{
-    from {color:#df8e1d; background-color: #df8e1d;}
-    to {color:#1ddfd5; background-color: #1ddfd5;}
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
 }
-h1:hover{
-    animation-name: spin-around;
-    animation-duration: 2s;
+*:hover{
+    display: inline-block !important;
+    animation-name: spin-around !important;
+    animation-duration: 1s !important;
 }
 img{
-    align-self: center;
-    text-align: center;
-    border-radius: 10%;
-    align-content: center;
-    justify-content: center;
-    justify-self: center;
-    justify-items: center;
-    display: block;
-    margin: 0 auto;
+    align-self: center !important;
+    text-align: center !important;
+    border-radius: 10% !important;
+    align-content: center !important;
+    justify-content: center !important;
+    justify-self: center !important;
+    justify-items: center !important;
+    display: block !important;
+    margin: 0 auto !important;
 }
 button {
-    color: green;
-    background-color: aqua;
-    border-width: 0;
-    border-radius:100px;
-}
-button:hover{
-    animation-name: spin-around;
-    animation-duration: 2s;
+    color: green !important;
+    background-color: aqua !important;
+    border-width: 0 !important;
+    border-radius:100px !important;
 }
